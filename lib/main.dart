@@ -1,4 +1,7 @@
+// Main Files
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+// Project Files
 import 'package:expense_tracker/widgets/expense_tracker.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
@@ -11,6 +14,13 @@ void main() async {
     const Duration(seconds: 3),
   );
   FlutterNativeSplash.remove();
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ],
+  );
   runApp(
     MaterialApp(
       theme: ThemeData().copyWith(),
