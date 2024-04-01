@@ -48,6 +48,7 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        // margin: Theme.of(context).cardTheme.margin,
         content: Text(
           "${expenses.title} Deleted",
           style: GoogleFonts.poppins(
@@ -93,6 +94,8 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
 
   @override
   Widget build(context) {
+    final width = MediaQuery.of(context).size.width;
+
     Widget? mainContent;
 
     //  if Static list will be removed by user or by me than or list of expense is not empty then it will show
@@ -176,13 +179,24 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: mainContent,
-          ),
-        ],
-      ),
+      body: (width < 400)
+          ? Column(
+              children: [
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            )
+          : Container(
+              margin: Theme.of(context).cardTheme.margin,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: mainContent,
+                  ),
+                ],
+              ),
+            ),
     );
   }
 }
