@@ -17,6 +17,8 @@ class ExpenseTracker extends StatefulWidget {
 }
 
 class _ExpenseTrackerState extends State<ExpenseTracker> {
+  var width;
+
   // make private list of Expense, in this expense i'd add some data
   final List<Expenses> _registeredExpense = [
     Expenses(
@@ -78,6 +80,7 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
   // add expense(Popup or overlay)
   void _openExpenseOverlay() {
     showModalBottomSheet(
+      useSafeArea: true,
       isScrollControlled: true,
       context: context,
       builder: (ctx) {
@@ -94,7 +97,7 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
 
   @override
   Widget build(context) {
-    final width = MediaQuery.of(context).size.width;
+    width = MediaQuery.of(context).size.width;
 
     Widget? mainContent;
 

@@ -41,13 +41,36 @@ class _ExpenseItemsState extends State<ExpenseItems> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              widget.expense.title,
-              textAlign: TextAlign.left,
-              style: GoogleFonts.poppins(
-                fontSize: 18,
-                color: HexColor("F5FEFD"),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  widget.expense.title,
+                  textAlign: TextAlign.left,
+                  style: GoogleFonts.poppins(
+                    fontSize: 22,
+                    color: HexColor("F5FEFD"),
+                  ),
+                ),
+                SizedBox(
+                  height: 45,
+                  width: 45,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: HexColor("F5FEFD"),
+                      ),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      categoryIcons[widget.expense.category],
+                      color: HexColor("F5FEFD"),
+                      // size: 28,
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 20,
@@ -65,13 +88,6 @@ class _ExpenseItemsState extends State<ExpenseItems> {
                 const Spacer(),
                 Row(
                   children: [
-                    Icon(
-                      categoryIcons[widget.expense.category],
-                      color: HexColor("F5FEFD"),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
                     Text(
                       widget.expense.formatedDate,
                       style: GoogleFonts.poppins(
