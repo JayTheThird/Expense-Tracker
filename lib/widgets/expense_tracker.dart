@@ -19,21 +19,8 @@ class ExpenseTracker extends StatefulWidget {
 class _ExpenseTrackerState extends State<ExpenseTracker> {
   var width;
 
-  // make private list of Expense, in this expense i'd add some data
-  final List<Expenses> _registeredExpense = [
-    Expenses(
-      title: "Flutter Course",
-      amount: 525,
-      date: DateTime.now(),
-      category: Category.work,
-    ),
-    Expenses(
-      title: "Munch Chocolate",
-      amount: 70,
-      date: DateTime.now(),
-      category: Category.food,
-    )
-  ];
+  // // make private list of Expense, in this expense i'd add some data
+  final List<Expenses> _registeredExpense = [];
 
   // User created new Expense
   void _addExpense(Expenses expenses) {
@@ -99,6 +86,7 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
   Widget build(context) {
     width = MediaQuery.of(context).size.width;
 
+    print(width);
     Widget? mainContent;
 
     //  if Static list will be removed by user or by me than or list of expense is not empty then it will show
@@ -182,7 +170,7 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
           )
         ],
       ),
-      body: (width < 400)
+      body: (width < 450)
           ? Column(
               children: [
                 Expanded(
