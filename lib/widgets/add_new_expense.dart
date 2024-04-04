@@ -1,8 +1,9 @@
 // Main FIles
-import 'package:expense_tracker/widgets/expenses_list/custom_textfields.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+// project files
+import 'package:expense_tracker/widgets/custom_widgets.dart';
 
 // project Files
 import 'package:expense_tracker/data_models/expense.dart';
@@ -58,116 +59,11 @@ class _AddNewExpense extends State<AddNewExpense> {
     final enteredAmount = double.tryParse(_amountFieldController.text);
     // final amountInvalid = enteredAmount == null || enteredAmount <= 0;
     if (_expenseTitleFieldController.text.trim().isEmpty) {
-      showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          content: Text(
-            "Expense Field Cant Be Empty",
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              color: HexColor("B67352"),
-            ),
-          ),
-          actions: [
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
-                ),
-                side: BorderSide(
-                  color: HexColor("B67352"),
-                  width: 1.5,
-                ),
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text(
-                "OK",
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: HexColor("B67352"),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
+      showTitleAlertDialog(context);
     } else if (enteredAmount == null || enteredAmount <= 0) {
-      showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          content: Text(
-            "Amount Can't be Empty or Negative",
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              color: HexColor("B67352"),
-            ),
-          ),
-          actions: [
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
-                ),
-                side: BorderSide(
-                  color: HexColor("B67352"),
-                  width: 1.5,
-                ),
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text(
-                "OK",
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: HexColor("B67352"),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
+      showAmountDialog(context);
     } else if (_selectedDate == null) {
-      showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          content: Text(
-            "Date is Not Selected",
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              color: HexColor("B67352"),
-            ),
-          ),
-          actions: [
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
-                ),
-                side: BorderSide(
-                  color: HexColor("B67352"),
-                  width: 1.5,
-                ),
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text(
-                "OK",
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: HexColor("B67352"),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
+      showDateAlertDialog(context);
     } else {
       widget.onAddExpense(
         Expenses(
