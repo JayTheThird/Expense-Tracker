@@ -11,7 +11,7 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   // Will Display Logo till 3 second whenever i open Expense Tracker
   await Future.delayed(
-    const Duration(seconds: 3),
+    const Duration(seconds: 2),
   );
   FlutterNativeSplash.remove();
   // for Device orientation

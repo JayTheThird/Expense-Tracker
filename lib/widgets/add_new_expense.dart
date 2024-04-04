@@ -182,75 +182,70 @@ class _AddNewExpense extends State<AddNewExpense> {
 
   @override
   Widget build(context) {
-    return SizedBox(
-      height: double.infinity,
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 50,
-            horizontal: 17,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "Add a New Expense.",
-                style: GoogleFonts.poppins(
-                  // fontWeight: FontWeight.w500,
-                  fontSize: 45,
-                  color: HexColor("A35E52"),
-                ),
-                textAlign: TextAlign.left,
+    return LayoutBuilder(
+      builder: (ctx, constraints) {
+        final width = constraints.maxHeight;
+        print(width); //384v   832h
+
+        return SizedBox(
+          height: double.infinity,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 50,
+                horizontal: 17,
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              expenseTitleTextField(_expenseTitleFieldController),
-              const SizedBox(
-                height: 5,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: expenseAmountTextField(_amountFieldController),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    // flex: 2,
-                    child: expenseDatePicker(
-                      _openDatePicker,
-                      _selectedDate,
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              expenseTypeDropDowns(
-                _selectedDropdownItem,
-                _DisplayDropdownValues,
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Spacer(),
-                  cancelButton(context),
-                  const SizedBox(
-                    width: 10,
+                  Text(
+                    "Add a New Expense.",
+                    style: GoogleFonts.poppins(
+                      // fontWeight: FontWeight.w500,
+                      fontSize: 45,
+                      color: HexColor("A35E52"),
+                    ),
+                    textAlign: TextAlign.left,
                   ),
-                  submitButton(_submitNewExpense),
+                  const SizedBox(height: 15),
+                  expenseTitleTextField(_expenseTitleFieldController),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: expenseAmountTextField(_amountFieldController),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        // flex: 2,
+                        child: expenseDatePicker(
+                          _openDatePicker,
+                          _selectedDate,
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  expenseTypeDropDowns(
+                    _selectedDropdownItem,
+                    _DisplayDropdownValues,
+                  ),
+                  const SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Spacer(),
+                      cancelButton(context),
+                      const SizedBox(width: 10),
+                      submitButton(_submitNewExpense),
+                    ],
+                  ),
                 ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
