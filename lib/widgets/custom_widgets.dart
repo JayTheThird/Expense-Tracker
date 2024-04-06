@@ -9,6 +9,7 @@ import "package:hexcolor/hexcolor.dart";
 import 'package:expense_tracker/data_models/expense.dart';
 
 // create a separate textfield so i can use in my expense tracker
+// start
 Widget expenseTitleTextField(_expenseTitleFieldController) {
   return TextField(
     controller: _expenseTitleFieldController,
@@ -172,10 +173,10 @@ Widget submitButton(_submitNewExpense) {
     ),
   );
 }
-
-
+// end
 
 // Alert Dialog on title, Amount and Date if not selected, also platform Specific such as Android or IOS
+// start
 void showTitleAlertDialog(context) {
   if (Platform.isIOS) {
     showCupertinoDialog(
@@ -409,3 +410,4 @@ void showDateAlertDialog(context) {
     );
   }
 }
+// end
